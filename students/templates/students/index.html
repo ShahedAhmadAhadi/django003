@@ -7,7 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    {{user.username}}
+    {% if user.is_authenticated %}
+        <p>{{user.username}}</p>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+        
     <h1>acount created</h1>
 </body>
 </html>

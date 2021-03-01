@@ -11,8 +11,6 @@ def signup(request):
         form = Register(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-
             return redirect('login')
     else:
         form = Register()
