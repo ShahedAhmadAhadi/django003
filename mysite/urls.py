@@ -21,6 +21,8 @@ from students import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.initial),
+    path('', include('students.urls')),
+    path('add/', views.CreateView),
     path('signup/', include('users.urls')),
     path('login/', authentication_views.LoginView.as_view(template_name="users/login.html"), name='login'),
     path('logout/', authentication_views.LogoutView.as_view(template_name="students/index.html"), name='logout'),
