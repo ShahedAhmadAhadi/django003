@@ -5,5 +5,5 @@ app_name = 'login'
 
 urlpatterns = [
     # path('login/', login, name="login"),
-    path('signup/', signup, name="signup"),
+    path('', signup, name="signup"),
 ]
