@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as authentication_views
-from students.views import initial, add_student, update_student, delete_student
+from students.views import initial, add_student, update_student, delete_student, detail
 from users.views import logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', initial, name="home"),
     path('', include('students.urls')),
+    path('home/<int:roll_no>/', detail, name="detail"),
     path('add/', add_student, name='add'),
     path('delete/<int:roll_no>/', delete_student, name='delete'),
     path('update/<int:roll_no>/', update_student, name='update'),

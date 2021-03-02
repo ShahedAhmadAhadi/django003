@@ -20,19 +20,22 @@
 
     <table>
         <tr>
-            <td>Name</td>
-            <td>Father Name</td>
-            <td>Update</td>
-            <td>Delete</td>
+            
+                <td>Name</td>
+                <td>Father Name</td>
+                {% comment %} <td>Update</td>
+                <td>Delete</td> {% endcomment %}
         </tr>
     {% for student in stu_lst %}
         {% comment %} <img src="{{ student.s_image.url }}" width="300px"/> {% endcomment %}
+        
         <tr>
-            <td>{{ student.s_name }}</td>
+            <td><a href="../home/{{ student.s_roll }}">{{ student.s_name }}</a></td>
             <td>{{ student.s_father_name }}</td>
-            <td><a href="/update/{{student.s_roll}}/">update</a></td>
-            <td><a href="/delete/{{student.s_roll}}/">delete</a></td>
+            {% comment %} <td><a href="/update/{{student.s_roll}}/">update</a></td>
+            <td><a href="/delete/{{student.s_roll}}/">delete</a></td> {% endcomment %}
         </tr>
+        </a>
             {% comment %} {{student.s_birth}} {{student.s_phone}}{{student.s_email}}</h1> {% endcomment %}
     {% endfor %}
     </table>

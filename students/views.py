@@ -14,6 +14,13 @@ def initial(request):
 
     return render(request, 'students/index.html', context)
 
+def detail(request, roll_no):
+    lst = Student.objects.get(s_roll = roll_no)
+    context = {
+        'lst': lst
+    }
+    return render(request, 'students/detail.html', context)
+
 @login_required
 def add_student(request):
     form = StudentForm(request.POST or None, request.FILES or None)
