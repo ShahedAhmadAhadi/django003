@@ -1,0 +1,25 @@
+{
+  "name": "django003",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "postcss css/tailwind.css -o ../django003/students/static/students/tailwind-output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShahedAhmadAhadi/django003.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShahedAhmadAhadi/django003/issues"
+  },
+  "homepage": "https://github.com/ShahedAhmadAhadi/django003#readme",
+  "dependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.3"
+  }
+}
