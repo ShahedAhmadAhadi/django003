@@ -1,16 +1,25 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Student
-from django.views.generic.edit import CreateView
+from students.forms import StudentForm
+from students.models import Student
 
 # Create your views here.
 
 def initial(request):
-    return render(request, 'students/index.html')
+    stu_lst = Student.objects.all()
+    context = {
+        'stu_lst': stu_lst
+    }
+
+    return render(request, 'students/index.html', context)
 
 
-class AddStudent(CreateView):
-    model = Student
-    fields = ['s_roll' ,'s_name','s_father_name', 's_birth', 's_phone', 's_email', 's_image']
-    template_name = 'students/student-form.html'
+def add_student(request):
+    form = StudentForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('students/index.html')
+    
+    return render(request, 'students/student-form.html', {'form': form})
 

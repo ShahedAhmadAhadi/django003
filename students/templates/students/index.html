@@ -15,6 +15,12 @@
     {% endif %}
         
     <h1>acount created</h1>
-    <a href="{% url 'login' %}"><button>Add student</button></a>
+    <a href="{% url 'add' %}"><button>Add student</button></a>
+
+    {% for student in stu_lst %}
+        <h1>{{ student.s_name }}  {{ student.s_father_name}}
+            {{student.s_birth}} {{student.s_phone}}{{student.s_email}}</h1>
+            <img src="{{ student.s_image }}" />
+    {% endfor %}
 </body>
 </html>
