@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import Register
+from django.contrib.auth import logout as logoff
 
 # Create your views here.
+def logout(request):
+    logoff(request)
+    return redirect('login')
 
 def login(request):
     return render(request, 'users/login.html')

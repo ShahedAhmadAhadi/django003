@@ -15,17 +15,28 @@
         <a href="{% url 'login' %}">Login</a>
     {% endif %}
         
-    <h1>acount created</h1>
+    {% comment %} <h1>acount created</h1> {% endcomment %}
     <a href="{% url 'add' %}"><button>Add student</button></a>
 
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Father Name</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
     {% for student in stu_lst %}
-        <h1>{{ student.s_name }}  {{ student.s_father_name}}
-            {{student.s_birth}} {{student.s_phone}}{{student.s_email}}</h1>
-            <img src="{{ student.s_image.url }}" width="300px"/>
-        <a href="/update/{{student.s_roll}}/">update</a>
-        <a href="/delete/{{student.s_roll}}/">delete</a>
-
+        {% comment %} <img src="{{ student.s_image.url }}" width="300px"/> {% endcomment %}
+        <tr>
+            <td>{{ student.s_name }}</td>
+            <td>{{ student.s_father_name }}</td>
+            <td><a href="/update/{{student.s_roll}}/">update</a></td>
+            <td><a href="/delete/{{student.s_roll}}/">delete</a></td>
+        </tr>
+            {% comment %} {{student.s_birth}} {{student.s_phone}}{{student.s_email}}</h1> {% endcomment %}
     {% endfor %}
+    </table>
+
 
 
 </body>
