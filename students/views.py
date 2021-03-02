@@ -20,7 +20,7 @@ def add_student(request):
 
     if form.is_valid():
         form.save()
-        return redirect('students:home')
+        return redirect('../../home/')
     
     return render(request, 'students/student-form.html', {'form': form})
 
