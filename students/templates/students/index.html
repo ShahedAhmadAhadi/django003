@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,12 @@
     {% for student in stu_lst %}
         <h1>{{ student.s_name }}  {{ student.s_father_name}}
             {{student.s_birth}} {{student.s_phone}}{{student.s_email}}</h1>
-            <img src="{{ student.s_image }}" />
+            <img src="{{ student.s_image.url }}" width="300px"/>
+        <a href="/update/{{student.s_roll}}/">update</a>
+        <a href="/delete/{{student.s_roll}}/">delete</a>
+
     {% endfor %}
+
+
 </body>
 </html>
