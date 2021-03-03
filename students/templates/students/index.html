@@ -16,34 +16,26 @@
         <a href="{% url 'login' %}">Login</a>
     {% endif %}
 <br>
-    <input type="search" id="search">
+    <input type="search" id="search" autocomplete="off" placeholder="Search" >
+
     <br>
     <br>
-    <!-- <ul>
-        <li></li>
-    </ul> -->
-        
-    {% comment %} <h1>acount created</h1> {% endcomment %}
+    <ul id="search_result">
+        <li>ad</li>
+    </ul>
     <a href="{% url 'add' %}" class="text-2xl"><button>Add student</button></a>
 
     <table>
         <tr>
                 <td>Name</td>
                 <td>Father Name</td>
-                {% comment %} <td>Update</td>
-                <td>Delete</td> {% endcomment %}
         </tr>
     {% for student in stu_lst %}
-        {% comment %} <img src="{{ student.s_image.url }}" width="300px"/> {% endcomment %}
         
         <tr>
             <td><a href="../home/{{ student.s_roll }}">{{ student.s_name }}</a></td>
             <td><a href="../home/{{ student.s_roll }}">{{ student.s_father_name }}</a></td>
-            {% comment %} <td><a href="/update/{{student.s_roll}}/">update</a></td>
-            <td><a href="/delete/{{student.s_roll}}/">delete</a></td> {% endcomment %}
         </tr>
-        </a>
-            {% comment %} {{student.s_birth}} {{student.s_phone}}{{student.s_email}}</h1> {% endcomment %}
     {% endfor %}
     </table>
 

@@ -1,29 +1,19 @@
 let input = document.getElementById('search')
+let show = document.getElementById('search_result')
 let search_str = ''
-input.addEventListener("keydown",async function (e) {
-    // += e.key
-    // console.log(e.keyCode)
-    // if ()
-    if (e.keyCode > 64 && e.keyCode < 91 || e.keyCode == 8) {
-        search_str += e.key
-        if (e.keyCode == 8){
-            search_str = search_str.slice(0, search_str.length - 10)
-            if (search_str) {
-                fetch(`http://localhost:8000/search/${search_str}`)
-                    .then(response => response.json()).then(res => {
-                        console.log(res)
-                    })
-            }
-        }else{
-            // search_str += e.key
-            fetch(`http://localhost:8000/search/${search_str}`)
-                    .then(response => response.json()).then(res => {
-                        console.log(res)
-                        // console.log(search_str, 'sdf')
-                    })
-            
-            }
-        }
-    
+show.innerHTML = ''
+input.addEventListener("keyup",async function () {
+    let val = input.value
+    show.innerHTML = ''
 
- })
+    fetch(`http://localhost:8000/search/${val}`)
+        .then(response => response.json()).then(res => {
+            for (i in res){
+                let li = show.appendChild(document.createElement('li'));
+                let span1 = li.appendChild(document.createElement("span"));
+                let span2 = li.appendChild(document.createElement('span'));
+                span1.appendChild(document.createTextNode(`${res[i]['name']}`))
+                span2.appendChild(document.createTextNode(`${res[i]['f/name']}`))
+            } 
+        })
+})
