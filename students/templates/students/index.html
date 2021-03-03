@@ -1,46 +1,59 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/students/tailwind-output.css' %}">
-    <title>Document</title>
-</head>
-<body>
-    {% if user.is_authenticated %}
-        <p>{{user.username}}</p>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-<br>
-    <input type="search" id="search" autocomplete="off" placeholder="Search" >
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="{% static './students/tailwind-output.css' %}"
+        />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="main">
+            <header class="flex bg-green-600 p-3 text-white justify-between">
+                <p class="text-3xl font-bold">Students</p>
+                <input
+                    type="search"
+                    id="search"
+                    autocomplete="off"
+                    placeholder="Search"
+                    class="w-1/3 text-gray-600 rounded px-3"
+                />
+                {% if user.is_authenticated %}
+                <div class="m-2">
+                    <!-- {{user.username}} -->
+                    <a href="{% url 'logout' %}" class="px-6 bg-yellow-400 py-1.5 font-semibold rounded">Logout</a>
+                </div>
+                {% else %}
+                <a href="{% url 'login' %}" class="px-6 bg-yellow-400 py-1.5 font-semibold rounded">Login</a>
+                {% endif %}
+                
+            </header>
+            <a href="{% url 'add' %}" class=""
+                ><button class="bg-blue-600 px-6 py-1 text-white rounded">Add student</button></a
+            >
+            <div>
+                <div class="b">
+                    <span>Name</span>
+                    <span>Father Name</span>
+                </div>
+            <div class="wrap" id="wrapper">
+                {% for student in stu_lst %}
+                <a href="../home/{{ student.s_roll }}">
+                    <div class="row">
+                        <span> {{ student.s_name }} </span>
+                        <span>{{ student.s_father_name }}</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            </div>
+                
+        </div>
 
-    <br>
-    <br>
-    <ul id="search_result">
-        <li>ad</li>
-    </ul>
-    <a href="{% url 'add' %}" class="text-2xl"><button>Add student</button></a>
-
-    <table>
-        <tr>
-                <td>Name</td>
-                <td>Father Name</td>
-        </tr>
-    {% for student in stu_lst %}
-        
-        <tr>
-            <td><a href="../home/{{ student.s_roll }}">{{ student.s_name }}</a></td>
-            <td><a href="../home/{{ student.s_roll }}">{{ student.s_father_name }}</a></td>
-        </tr>
-    {% endfor %}
-    </table>
-
-
-    <script src="{% static 'students/app.js' %}"></script>
-
-</body>
+        <script src="{% static 'students/app.js' %}"></script>
+    </body>
 </html>
