@@ -6,13 +6,15 @@ input.addEventListener("keyup",async function () {
 
     fetch(`http://localhost:8000/search/${val}`)
         .then(response => response.json()).then(res => {
+            console.log(res)
             document.getElementById('wrapper').innerHTML = ''
             for (i in res){
                 document.getElementById('wrapper').innerHTML += `
-                <a href="../home/{{ student.s_roll }}">
+                <a href="../home/${ res[i]['roll_no'] }">
                 <div class="font-bold border-t-2 border-gray-200 p-2">
                     <span class="w-1/6 inline-block"> ${res[i]['name']} </span>
                     <span class="w-1/6 inline-block">${res[i]['f/name']}</span>
+                    <span class="w-1/6 inline-block">${res[i]['phone']}</span>
                 </div>
             </a>`
                 // let li = show.appendChild(document.createElement('li'));

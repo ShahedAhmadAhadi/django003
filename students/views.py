@@ -14,7 +14,7 @@ def search(request, name):
     a = Student.objects.filter(s_name__contains = name)
     for i in a:
         count += 1
-        res.update({f"res{count}": {'id':f"{i.s_name[1:2]}{i.s_father_name[1:2]}{int(count * 1234 - count / 3)}", 'name': i.s_name, 'f/name': i.s_father_name}})
+        res.update({f"res{count}": {'id':f"{i.s_name[1:2]}{i.s_father_name[1:2]}{int(i.s_roll * 1234)}", 'name': i.s_name, 'f/name': i.s_father_name, 'phone': i.s_phone, 'roll_no': i.s_roll}})
     return JsonResponse(res)
 
 def initial(request):
