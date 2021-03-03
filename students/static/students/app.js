@@ -10,9 +10,9 @@ input.addEventListener("keyup",async function () {
             for (i in res){
                 document.getElementById('wrapper').innerHTML += `
                 <a href="../home/{{ student.s_roll }}">
-                <div class="row">
-                    <span> ${res[i]['name']} </span>
-                    <span>${res[i]['f/name']}</span>
+                <div class="font-bold border-t-2 border-gray-200 p-2">
+                    <span class="w-1/6 inline-block"> ${res[i]['name']} </span>
+                    <span class="w-1/6 inline-block">${res[i]['f/name']}</span>
                 </div>
             </a>`
                 // let li = show.appendChild(document.createElement('li'));
