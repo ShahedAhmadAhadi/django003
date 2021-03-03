@@ -8,17 +8,15 @@ from django.contrib.auth.decorators import login_required
 
 
 def search(request, name):
-    a = Student.objects.all()
-    count = 1
-    # print(name)
+    # a = Student.objects.all()
+    count = 0
+    res = {}
+    print(res)
+    a = Student.objects.filter(s_name__contains = name)
     for i in a:
-        for y in i.s_name:
-            if y == name:
-                count += 1
-                
-                print(i.s_name)
-                print()
-            return JsonResponse({"hi":i.s_name})
+        count += 1
+        res.update({f"res{count}": [i.s_name, i.s_father_name]})
+    return JsonResponse(res)
 
 
 
