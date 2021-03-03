@@ -15,6 +15,13 @@
     {% else %}
         <a href="{% url 'login' %}">Login</a>
     {% endif %}
+<br>
+    <input type="search" id="search">
+    <br>
+    <br>
+    <!-- <ul>
+        <li></li>
+    </ul> -->
         
     {% comment %} <h1>acount created</h1> {% endcomment %}
     <a href="{% url 'add' %}" class="text-2xl"><button>Add student</button></a>
@@ -41,6 +48,7 @@
     </table>
 
 
+    <script src="{% static 'students/app.js' %}"></script>
 
 </body>
 </html>

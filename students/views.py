@@ -1,10 +1,26 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from students.forms import StudentForm
 from students.models import Student
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+
+def search(request, name):
+    a = Student.objects.all()
+    count = 1
+    # print(name)
+    for i in a:
+        for y in i.s_name:
+            if y == name:
+                count += 1
+                
+                print(i.s_name)
+                print()
+            return JsonResponse({"hi":i.s_name})
+
+
 
 def initial(request):
     stu_lst = Student.objects.all()
