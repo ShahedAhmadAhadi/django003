@@ -3,10 +3,16 @@ from django.http import HttpResponse,JsonResponse
 from students.forms import StudentForm
 from students.models import Student
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 
+# def not_user():
+#     if not User.is_authenticated:
+#         redirect('../../login')
+
+@login_required(login_url='../login/')
 def search(request, name):
     count = 0
     res = {}
@@ -17,6 +23,7 @@ def search(request, name):
         res.update({f"res{count}": {'id':f"{i.s_name[1:2]}{i.s_father_name[1:2]}{int(i.s_roll * 1234)}", 'name': i.s_name, 'f/name': i.s_father_name, 'phone': i.s_phone, 'roll_no': i.s_roll}})
     return JsonResponse(res)
 
+@login_required(login_url='../login/')
 def initial(request):
     stu_lst = Student.objects.all()
     context = {
@@ -25,6 +32,7 @@ def initial(request):
 
     return render(request, 'students/index.html', context)
 
+@login_required(login_url='../login/')
 def detail(request, roll_no):
     lst = Student.objects.get(s_roll = roll_no)
     context = {
@@ -32,7 +40,7 @@ def detail(request, roll_no):
     }
     return render(request, 'students/detail.html', context)
 
-@login_required
+@login_required(login_url='../login/')
 def add_student(request):
     form = StudentForm(request.POST or None, request.FILES or None)
 
@@ -42,7 +50,7 @@ def add_student(request):
     
     return render(request, 'students/student-form.html', {'form': form})
 
-@login_required
+@login_required(login_url='../../login/')
 def update_student(request, roll_no=None):
     if roll_no:
         student = Student.objects.get(s_roll = roll_no)
@@ -55,7 +63,7 @@ def update_student(request, roll_no=None):
 
         return render(request, 'students/update.html', {'form': form})
 
-@login_required
+@login_required(login_url='../../login/')
 def delete_student(request, roll_no):
     lst = Student.objects.get(s_roll = roll_no)
 
