@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 
 
 def search(request, name):
-    # a = Student.objects.all()
     count = 0
     res = {}
     print(res)
@@ -17,7 +16,6 @@ def search(request, name):
         count += 1
         res.update({f"res{count}": [i.s_name, i.s_father_name]})
     return JsonResponse(res)
-
 
 
 def initial(request):
