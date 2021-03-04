@@ -19,7 +19,7 @@ if (input.value == '') {
                 
                 for (i in res){
                     document.getElementById('wrapper').innerHTML += `
-                    <a href="../home/${ res[i]['roll_no'] }">
+                    <a href="../home/${ res[i]['roll_no'] }" class="hover:bg-gray-100">
                     <div class="font-bold border-t-2 border-gray-200 px-2 py-3">
                         <span class="w-1/6 ml-2 inline-block"> ${res[i]['name']} </span>
                         <span class="w-1/6 inline-block">${res[i]['f/name']}</span>
