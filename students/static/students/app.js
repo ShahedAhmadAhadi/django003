@@ -13,7 +13,7 @@ if (input.value == '') {
             console.log(res)
             document.getElementById('wrapper').innerHTML = ''
             if (Object.getOwnPropertyNames(res).length < 1) {
-                document.getElementById('wrapper').innerHTML += `<div class="justify-self-center text-black">No Result</div>`;
+                document.getElementById('wrapper').innerHTML += `<div class="justify-self-center self-center font-bold text-4xl text-purple-200 py-44">No Result</div>`;
                 console.log('emptyr')
             }else if (res){
                 

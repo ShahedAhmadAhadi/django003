@@ -6,14 +6,25 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static 'users/tailwind-output.css' %}">
+        <style>
+            #id_password1{
+                border-bottom: 1px solid #34D399;
+                width: 100%;
+            }
+            #id_password1::placeholder{
+                cont
+            }
+        </style>
         <title>Document</title>
     </head>
     <body>
         <form method="post">
-            {% csrf_token %} {% for field in form %} {{field.label}} {{field}}
+            {% csrf_token %}
+            {% for field in form %} {{field}}
             {% endfor %}
+            <!-- {{ form}} -->
             <button type="submit">Signup</button>
+
         </form>
-        <h1>Users</h1>
     </body>
 </html>
