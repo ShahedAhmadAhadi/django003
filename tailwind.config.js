@@ -1,8 +1,8 @@
 module.exports = {
-  // purge: {
-  //   enabled: true,
-  //   content: ['../your-django-folder/path-to-your-templates/**/*.html'],
-  // },
+  purge: {
+    enabled: true,
+    content: ['../django003/students/**/*.html'],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
