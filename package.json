@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "postcss css/tailwind.css -o ../django003/students/static/students/tailwind-output.css"
+    "build": "postcss css/tailwind.css -o ../django003/students/static/students/tailwind-output.css",
+    "build1": "postcss css/tailwind.css -o ../django003/users/static/users/tailwind-output.css"
   },
   "repository": {
     "type": "git",
