@@ -12,21 +12,23 @@ if (input.value == '') {
         .then(response => response.json()).then(res => {
             console.log(res)
             document.getElementById('wrapper').innerHTML = ''
-            for (i in res){
-                document.getElementById('wrapper').innerHTML += `
-                <a href="../home/${ res[i]['roll_no'] }">
-                <div class="font-bold border-t-2 border-gray-200 px-2 py-3">
-                    <span class="w-1/6 ml-2 inline-block"> ${res[i]['name']} </span>
-                    <span class="w-1/6 inline-block">${res[i]['f/name']}</span>
-                    <span class="w-1/6 inline-block">(+93) - ${res[i]['phone']}</span>
-                </div>
-            </a>`
-                // let li = show.appendChild(document.createElement('li'));
-                // let span1 = li.appendChild(document.createElement("span"));
-                // let span2 = li.appendChild(document.createElement('span'));
-                // span1.appendChild(document.createTextNode(`${res[i]['name']}`))
-                // span2.appendChild(document.createTextNode(`${res[i]['f/name']}`))
-            } 
+            if (Object.getOwnPropertyNames(res).length < 1) {
+                document.getElementById('wrapper').innerHTML += `<div class="justify-self-center text-black">No Result</div>`;
+                console.log('emptyr')
+            }else if (res){
+                
+                for (i in res){
+                    document.getElementById('wrapper').innerHTML += `
+                    <a href="../home/${ res[i]['roll_no'] }">
+                    <div class="font-bold border-t-2 border-gray-200 px-2 py-3">
+                        <span class="w-1/6 ml-2 inline-block"> ${res[i]['name']} </span>
+                        <span class="w-1/6 inline-block">${res[i]['f/name']}</span>
+                        <span class="w-1/6 inline-block">(+93) - ${res[i]['phone']}</span>
+                    </div>
+                </a>`
+                } 
+            }
+            
         })
         // if (!val) {
         //     document.getElementById('wrapper').innerHTML += `

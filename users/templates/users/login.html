@@ -13,7 +13,7 @@
         }
         input{
             width: 90%;
-            border: 1px solid #aaa;
+            border: 1px solid #eecc45;
             border-radius: 5px;
             padding: 0.5rem 0.725rem;
             padding-left: 7.2rem;
@@ -27,7 +27,7 @@
             /* border-bottom: 1px solid #22aa22;
             padding: 0.125rem 0.725rem;
             margin: auto; */
-            background-color: #aaa;
+            background-color: #eecc45;
             padding: 0.5rem 1rem;
             border-radius: 5px 0 0 5px;
             position: absolute;
@@ -37,7 +37,7 @@
             top: 17px;
         }
         .pass{
-            background-color: #aaa;
+            background-color: #eecc45;
             padding: 0.5rem 1rem;
             border-radius: 5px 0 0 5px;
             position: absolute;
@@ -49,17 +49,20 @@
     </style>
 
 </head>
-<body class="bg-green-600">
-    <form method="post" class="bg-white shadow border rounded-lg border-gray-100 w-96 flex flex-col m-auto mt-24">
+<body class="bg-blue-400">
+    <form method="post" class="bg-white shadow-xl border rounded-lg border-gray-100 w-96 flex flex-col m-auto mt-24">
         {% csrf_token %}
         <div class="di">
             <span class="user">Username</span> {{ form.username }}
         </div>
-        <div>
+        <div class="di">
             <span class="pass">Password</span> {{ form.password }}
         </div>
-        <button type="submit" class="px-6 py-1.5 bg-blue-600 text-white m-auto font-semibold rounded">login</button>
-        <a href="/signup/">SignUp</a>
+        <button type="submit" class="px-6 py-1.5 bg-green-600 text-white m-auto font-semibold rounded mt-4">login</button>
+        <p class="m-auto text-sm mt-2">don't have an account,
+            <a href="/signup/" class="text-indigo-600 font-semibold">SignUp</a>
+
+        </p>
     </form>
 </body>
 </html>
