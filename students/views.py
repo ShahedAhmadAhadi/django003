@@ -42,13 +42,16 @@ def detail(request, roll_no):
 
 @login_required(login_url='../login/')
 def add_student(request):
-    form = StudentForm(request.POST or None, request.FILES or None)
+    form = StudentForm(request.POST, request.FILES)
 
-    print(request.POST)
+    # print(request.POST, request.FILES,  form.is_valid(), form)
 
     if form.is_valid():
+        print(form, 'a')
         form.save()
         return redirect('../../home/')
+    # elif not form.is_valid:
+    #     pass
     
     
     return render(request, 'students/student-form.html', {'form': form})
