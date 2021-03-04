@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('s_roll', models.IntegerField(primary_key=True, serialize=False)),
                 ('s_name', models.CharField(max_length=30)),
                 ('s_father_name', models.CharField(max_length=30)),
-                ('s_birth', models.DateField(validators=[students.models.validate_age])),
+                ('s_birth', models.DateField()),
                 ('s_phone', models.IntegerField(unique=True)),
                 ('s_email', models.EmailField(max_length=254, unique=True)),
                 ('s_image', models.ImageField(upload_to='studentImages')),

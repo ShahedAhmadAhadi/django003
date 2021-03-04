@@ -44,9 +44,12 @@ def detail(request, roll_no):
 def add_student(request):
     form = StudentForm(request.POST or None, request.FILES or None)
 
+    print(request.POST)
+
     if form.is_valid():
         form.save()
         return redirect('../../home/')
+    
     
     return render(request, 'students/student-form.html', {'form': form})
 
