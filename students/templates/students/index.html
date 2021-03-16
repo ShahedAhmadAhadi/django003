@@ -71,24 +71,23 @@
                             <span>(+93) - {{ student.s_phone }}</span>
                         </div>
                 {% endfor %}
-                <div class="pagination row font-bold border-t-2 border-gray-200 px-2 py-3 text-white">
-                        <span class="step-links">
+                <div class="pagination row font-bold border-t-2 border-gray-200 px-2 py-3 text-blue-600">
+                        <span class="step-links  block text-center">
                             {% if page_obj.has_previous %}
-                                <a href="?page=1" class="bg-green-600 rounded px-6 py-1.5 mx-2">First</a>
-                                <a href="?page={{ page_obj.previous_page_number }}" class="bg-green-600 rounded px-6 py-1.5 mx-2">{{page_obj.previous_page_number}}</a>
+                                <a href="?page=1" class="mx-2">First / </a>
+                                <a href="?page={{ page_obj.previous_page_number }}" class="mx-2">{{page_obj.previous_page_number}} / </a>
                             {% endif %}
+                            <span class="current mx-2 bg-blue-600 rounded px-6 text-white py-1.5">{{ page_obj.number }}</span>
 
-                            <span class="current bg-green-600 rounded px-6 py-1.5 mx-2">
-                                {{ page_obj.number }}
-                            </span>
-
-                            {% comment %} <span>
-                                ...
-                            </span> {% endcomment %}
 
                             {% if page_obj.has_next %}
-                                <a href="?page={{ page_obj.next_page_number }}" class="bg-green-600 rounded mx-2 px-6 py-1.5">{{page_obj.next_page_number}}</a>
-                                <a href="?page={{ page_obj.paginator.num_pages }}" class="bg-green-600 rounded mx-2 px-6 py-1.5">Last</a>
+                            <a href="?page={{ page_obj.next_page_number }}" class="mx-2">{{page_obj.next_page_number}}  <span> / </span> </a>
+
+                            <span>
+                                ...
+                            </span>
+
+                            <a href="?page={{ page_obj.paginator.num_pages }}" class="mx-2">/ Last</a>
                             {% endif %}
                         </span>
                     </div>
