@@ -12,3 +12,4 @@ class StudentForm(forms.ModelForm):
             's_phone': forms.TextInput(attrs={'class': 'w-full border-b border-green-400 py-1 my-2 px-3 focus:outline-none', 'placeholder': 'Phone'}),
             's_email': forms.TextInput(attrs={'class': 'w-full border-b border-green-400 py-1 my-2 px-3 focus:outline-none', 'placeholder': 'E-mail'}),
         }
+    

@@ -8,7 +8,7 @@ if (input.value == '') {
 }
     
 
-    fetch(`http://localhost:8000/search/${val}`)
+    fetch(`http://localhost:8001/search/${val}`)
         .then(response => response.json()).then(res => {
             console.log(res)
             document.getElementById('wrapper').innerHTML = ''

@@ -4,6 +4,7 @@ from students.forms import StudentForm
 from students.models import Student
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.views.generic import ListView
 
 # Create your views here.
 
@@ -23,14 +24,18 @@ def search(request, name):
         res.update({f"res{count}": {'id':f"{i.s_name[1:2]}{i.s_father_name[1:2]}{int(i.s_roll * 1234)}", 'name': i.s_name, 'f/name': i.s_father_name, 'phone': i.s_phone, 'roll_no': i.s_roll}})
     return JsonResponse(res)
 
-@login_required(login_url='/login/')
-def initial(request):
-    stu_lst = Student.objects.all()
-    context = {
-        'stu_lst': stu_lst
-    }
+# @login_required(login_url='/login/')
+# def initial(request):
+#     # stu_lst = Student.objects.all()
+#     # context = {
+#     #     'stu_lst': stu_lst
+#     # }
 
-    return render(request, 'students/index.html', context)
+#     # return render(request, 'students/index.html', context)
+
+class Index(ListView):
+    paginate_by = 4
+    model = Student
 
 @login_required(login_url='/login/')
 def detail(request, roll_no):
