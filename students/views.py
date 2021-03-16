@@ -17,11 +17,12 @@ from django.core import serializers
 #         redirect('../../login')
 
 # @login_required(login_url='/login/')
-def search(request, name):
+def search(request):
+    # print(request.GET)
     count = 0
     res = {}
     print(res)
-    search_results = Student.objects.filter(s_name__icontains = name)
+    search_results = Student.objects.filter(s_name__icontains = request.GET['text'])
     pages = Paginator(search_results, 4)
     page_number = request.GET.get('page')
     page_obj = pages.get_page(page_number)

@@ -31,5 +31,5 @@ urlpatterns = [
     path('login/', authentication_views.LoginView.as_view(template_name="users/login.html"), name='login'),
     # path('logout/', authentication_views.LogoutView.as_view(template_name="users/login.html"), name='logout'),
     path('logout/', logout, name="logout"),
-    path("search/<str:name>", search, name="search")
+    path("search/", search, name="search")
 ]
