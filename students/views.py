@@ -5,6 +5,9 @@ from students.models import Student
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import ListView
+from django.core.paginator import Paginator
+from django.core import serializers
+
 
 # Create your views here.
 
@@ -13,16 +16,27 @@ from django.views.generic import ListView
 #     if not User.is_authenticated:
 #         redirect('../../login')
 
-@login_required(login_url='/login/')
+# @login_required(login_url='/login/')
 def search(request, name):
     count = 0
     res = {}
     print(res)
-    a = Student.objects.filter(s_name__icontains = name)
-    for i in a:
-        count += 1
-        res.update({f"res{count}": {'id':f"{i.s_name[1:2]}{i.s_father_name[1:2]}{int(i.s_roll * 1234)}", 'name': i.s_name, 'f/name': i.s_father_name, 'phone': i.s_phone, 'roll_no': i.s_roll}})
-    return JsonResponse(res)
+    search_results = Student.objects.filter(s_name__icontains = name)
+    pages = Paginator(search_results, 4)
+    page_number = request.GET.get('page')
+    page_obj = pages.get_page(page_number)
+    res = serializers.serialize('json', page_obj)
+
+    # for i in search_results:
+    #     count += 1
+    #     res.update({f"res{count}": {'id':f"{i.s_name[1:2]}{i.s_father_name[1:2]}{int(i.s_roll * 1234)}", 'name': i.s_name, 'f/name': i.s_father_name, 'phone': i.s_phone, 'roll_no': i.s_roll}})
+    # 
+    if len(res) < 1:
+        return JsonResponse({'res': 'none'})
+    else:
+        return JsonResponse({'res': res})
+
+
 
 # @login_required(login_url='/login/')
 # def initial(request):
