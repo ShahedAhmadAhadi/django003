@@ -21,12 +21,18 @@ def search(request):
     # print(request.GET)
     count = 0
     res = {}
-    print(res)
     search_results = Student.objects.filter(s_name__icontains = request.GET['text'])
     pages = Paginator(search_results, 4)
+    # print(pages)
     page_number = request.GET.get('page')
+    print(page_number)
     page_obj = pages.get_page(page_number)
+    # print(page_obj)
+    for i in page_obj:
+        print(i)
+    # print(page_obj.__dict__.update('a', page_obj))
     res = serializers.serialize('json', page_obj)
+    # print(res)
 
     # for i in search_results:
     #     count += 1
