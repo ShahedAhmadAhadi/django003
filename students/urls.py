@@ -13,4 +13,3 @@ from django.conf.urls.static import static
 urlpatterns = [
     # ... the rest of your URLconf goes here ...
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
->>>>>>> 56954c21df162c3da246f2cf307b8f6a6e541be2
